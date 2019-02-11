@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  joomla:
+    image: joomla
+    #restart: always
+    ports:
+      - "80:80"
+    environment:
+      JOOMLA_DB_HOST: "joomladb"
+      JOOMLA_DB_NAME: "joomla"
+      JOOMLA_DB_USER: "user"
+      JOOMLA_DB_PASSWORD: "dbpass"
+
+  joomladb:
+    image: mysql:5.6
+    #restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "rootpass"
+      MYSQL_DATABASE: "joomla"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "dbpass"
+
+
+# vim: ft=yaml tw=80 et ts=2 sw=2 sts=2
