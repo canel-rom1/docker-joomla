@@ -4,6 +4,9 @@ services:
   joomla:
     image: joomla
     #restart: always
+    networks:
+      - lan
+      - wan
     ports:
       - "80:80"
     environment:
@@ -15,11 +18,18 @@ services:
   joomladb:
     image: mysql:5.6
     #restart: always
+    networks:
+      - lan
     environment:
       MYSQL_ROOT_PASSWORD: "rootpass"
       MYSQL_DATABASE: "joomla"
       MYSQL_USER: "user"
       MYSQL_PASSWORD: "dbpass"
+
+networks:
+  lan: 
+  wan:
+    #external: True
 
 
 # vim: ft=yaml tw=80 et ts=2 sw=2 sts=2
